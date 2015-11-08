@@ -1,16 +1,33 @@
-package studyup.projects.ggc.studyup;
+package studyup.projects.ggc.controllers;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import javax.xml.transform.Result;
+
+public class MainActivity extends Activity {
+
+    private TextView profileTextView;
+    private Button loadProfileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.profileTextView = (TextView) findViewById(R.id.profile_text_view);
+        this.loadProfileButton = (Button) findViewById(R.id.load_profile_button);
+        this.loadProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginUserAsyncTask backgroundTask = new LoginUserAsyncTask(getApplicationContext(), profileTextView, "matt@ggc.edu", "test");
+                backgroundTask.execute();
+            }
+        });
     }
 
     @Override
