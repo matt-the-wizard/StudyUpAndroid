@@ -1,13 +1,14 @@
 package studyup.projects.ggc.controllers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.TextView;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,8 +44,6 @@ public class LoginUserAsyncTask extends AsyncTask<Void, Integer, String> {
     protected String doInBackground(Void... params) {
         HttpURLConnection urlConnection = null;
         URL url = null;
-        // TODO: Make this GSON Library
-        JSONObject object = null;
         InputStream inStream = null;
         String response = "";
         try {
@@ -81,6 +80,13 @@ public class LoginUserAsyncTask extends AsyncTask<Void, Integer, String> {
     protected void onPostExecute(String response) {
         Toast.makeText(this.context, "Profile loaded successfully!", Toast.LENGTH_LONG).show();
         this.loadingDisplay.setText(response);
+        if (response != null) {
+            Gson gson = new GsonBuilder().create();
+            User.LOGGED_IN_USER = gson.fromJson(response, User.class);
+            Intent intent = new Intent(this.context, ProfileActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            this.context.startActivity(intent);
+        }
     }
 
 
