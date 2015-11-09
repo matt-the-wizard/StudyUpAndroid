@@ -1,13 +1,22 @@
 package studyup.projects.ggc.controllers;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.concurrent.ExecutionException;
+
+import studyup.projects.ggc.models.Student;
+import studyup.projects.ggc.models.StudentHash;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,10 +33,28 @@ public class MainActivity extends AppCompatActivity {
         this.loadProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginUserAsyncTask backgroundTask = new LoginUserAsyncTask(getApplicationContext(), profileTextView, "matt@ggc.edu", "test");
-                backgroundTask.execute();
+                try {
+                    LoginUserAsyncTask backgroundTask = new LoginUserAsyncTask("matt@ggc.edu", "test");
+                    String response  = backgroundTask.execute().get();
+                    if (response != null) {
+                        Gson gson = new GsonBuilder().create();
+                        StudentHash studentGSON = gson.fromJson(response, StudentHash.class);
+                        Student.LOGGED_IN_USER = studentGSON.getSTUDENT();
+                        Log.d("Student", studentGSON.getSTUDENT().toString());
+                        Log.d("Student in thread", Student.LOGGED_IN_USER.toString());
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        MainActivity.this.startActivity(intent);
+                    }
+                }
+                catch (ExecutionException | InterruptedException ei) {
+                    //Toast.makeText(getApplicationContext())
+                }
             }
         });
+    }
+
+    public static void launchProfileActivity(String response){
+
     }
 
     @Override

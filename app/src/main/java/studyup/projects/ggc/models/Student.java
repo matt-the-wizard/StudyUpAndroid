@@ -1,10 +1,7 @@
 package studyup.projects.ggc.models;
 
-public class User {
-    public static User LOGGED_IN_USER;
-
-    // Attributes don't follow normal java conventions as they are
-    // all caps for deserialization of JSON objects through GSON library
+public class Student {
+    public static Student LOGGED_IN_USER;
     private String USERNAME, FIRSTNAME, LASTNAME, INSTITUTION;
 
     public String getUsername() {
@@ -40,7 +37,7 @@ public class User {
     }
 
     @Override
-    public String toString() {
-        return getFirstName() + " " + getLastName();
+    public String toString(){
+        return this.FIRSTNAME;
     }
 }
