@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
@@ -19,17 +20,20 @@ import studyup.projects.ggc.models.StudentJSONParser;
 public class MainActivity extends AppCompatActivity {
 
     private Button loadProfileButton;
+    private TextView usernameTextValue, passwordTextValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.loadProfileButton = (Button) findViewById(R.id.load_profile_button);
+        this.usernameTextValue = (TextView) findViewById(R.id.username_value);
+        this.passwordTextValue = (TextView) findViewById(R.id.password_value);
         this.loadProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             try {
-                LoginUserAsyncTask backgroundTask = new LoginUserAsyncTask("matt@ggc.edu", "test");
+                LoginUserAsyncTask backgroundTask = new LoginUserAsyncTask(usernameTextValue.getText().toString().trim(), passwordTextValue.getText().toString().trim());
                 String response  = backgroundTask.execute().get();
                 if (response != null) {
                     Student.LOGGED_IN_USER = StudentJSONParser.parseJSONRecord(response);

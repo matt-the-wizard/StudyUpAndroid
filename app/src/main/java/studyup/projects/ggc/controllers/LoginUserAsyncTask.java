@@ -15,8 +15,7 @@ public class LoginUserAsyncTask extends AsyncTask<Void, Integer, String> {
     private String jsonURL;
 
     public LoginUserAsyncTask(String username, String password) {
-        this.jsonURL = "https://studyupggc.herokuapp.com/api/students/access_profile?username=wizard@ggc.edu&password=supersecret";
-        //this.jsonURL = "https://studyupggc.herokuapp.com/api/students/access_profile?username=" + username + "&password=" + password;
+        this.jsonURL = "https://studyupggc.herokuapp.com/api/students/access_profile?username=" + username + "&password=" + password;
     }
 
     @Override
