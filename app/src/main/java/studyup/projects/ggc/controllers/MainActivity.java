@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.startActivity(intent);
                 }
                 else if (response.contains(Student.AUTHENTICATION_ERROR)){
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), StudentJSONParser.parseJSONError(response), Toast.LENGTH_LONG).show();
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "There was an error in loading your account.", Toast.LENGTH_LONG).show();
