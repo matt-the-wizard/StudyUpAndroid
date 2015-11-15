@@ -28,6 +28,16 @@ public class StudentJSONParser {
         return student;
     }
 
+    public static String parseJSONError(String data){
+        String response = "Error";
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            response = jsonObject.get(Student.AUTHENTICATION_ERROR).toString();
+        }
+        catch(JSONException e) {}
+        return response;
+    }
+
     public static Object[] parseJSONRecordList(String data){
         return null;
     }
