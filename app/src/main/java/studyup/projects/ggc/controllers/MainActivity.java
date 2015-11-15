@@ -35,10 +35,17 @@ public class MainActivity extends AppCompatActivity {
             try {
                 LoginUserAsyncTask backgroundTask = new LoginUserAsyncTask(usernameTextValue.getText().toString().trim(), passwordTextValue.getText().toString().trim());
                 String response  = backgroundTask.execute().get();
-                if (response != null) {
+                Log.d("Response", response);
+                if (response != null && !response.contains(Student.AUTHENTICATION_ERROR)) {
                     Student.LOGGED_IN_USER = StudentJSONParser.parseJSONRecord(response);
                     Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                     MainActivity.this.startActivity(intent);
+                }
+                else if (response.contains(Student.AUTHENTICATION_ERROR)){
+                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "There was an error in loading your account.", Toast.LENGTH_LONG).show();
                 }
             }
             catch (ExecutionException | InterruptedException ei) {

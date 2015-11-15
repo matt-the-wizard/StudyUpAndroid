@@ -2,6 +2,7 @@ package studyup.projects.ggc.models;
 
 public class Student {
     public static Student LOGGED_IN_USER;
+    public static final String AUTHENTICATION_ERROR = "Study Up Authentication Error";
     private String userName, firstName, lastName, institution;
 
     public Student(){}

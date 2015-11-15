@@ -17,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        this.mProfileLableDisplay = (TextView) findViewById(R.id.profileTitleLabel);
+        this.mProfileLableDisplay = (TextView) findViewById(R.id.profileTitleValue);
         this.mFirstNameDisplay = (TextView) findViewById(R.id.firstNameValue);
         this.mLastNameDisplay = (TextView) findViewById(R.id.lastNameValue);
         this.mInstitutionDisplay = (TextView) findViewById(R.id.institutionValue);
