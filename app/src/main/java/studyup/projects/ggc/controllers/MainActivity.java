@@ -20,7 +20,6 @@ import studyup.projects.ggc.tasks.LoginUserAsyncTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private boolean hasInternetConnection;
     private Button loadProfileButton;
     private TextView usernameTextValue, passwordTextValue;
 
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.hasInternetConnection = false;
         this.loadProfileButton = (Button) findViewById(R.id.load_profile_button);
         this.usernameTextValue = (TextView) findViewById(R.id.username_value);
         this.passwordTextValue = (TextView) findViewById(R.id.password_value);
