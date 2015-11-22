@@ -1,4 +1,4 @@
-package studyup.projects.ggc.controllers;
+package studyup.projects.ggc.tasks;
 
 import android.util.Log;
 import android.os.AsyncTask;
