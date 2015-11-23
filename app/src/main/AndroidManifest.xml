@@ -11,6 +11,7 @@
         android:label="@string/app_name"
 
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -28,6 +29,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="studyup.projects.ggc.controllers.MainActivity" />
+        </activity>
+        <activity
+            android:name=".StudentListActivity"
+            android:label="@string/title_activity_students_list"
+            android:parentActivityName=".ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="studyup.projects.ggc.controllers.ProfileActivity" />
         </activity>
     </application>
 

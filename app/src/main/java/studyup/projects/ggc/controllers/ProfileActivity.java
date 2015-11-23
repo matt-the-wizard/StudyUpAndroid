@@ -1,7 +1,10 @@
 package studyup.projects.ggc.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import studyup.projects.ggc.models.Student;
@@ -27,6 +30,23 @@ public class ProfileActivity extends AppCompatActivity {
         this.mLastNameDisplay.setText(Student.LOGGED_IN_USER.getLastName());
         this.mInstitutionDisplay.setText(Student.LOGGED_IN_USER.getInstitution());
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_students_list) {
+            Intent intent = new Intent(ProfileActivity.this, StudentListActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
