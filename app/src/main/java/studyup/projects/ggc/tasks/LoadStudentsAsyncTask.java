@@ -15,8 +15,7 @@ import java.net.URL;
  */
 public class LoadStudentsAsyncTask extends AsyncTask<Void, Void, String> {
 
-    private String jsonURL = "http://www.localhost:3000/api/students";
-    //private String jsonURL = "https://studyupggc.herokuapp.com/api/students";
+    private String jsonURL = "https://studyupggc.herokuapp.com/api/students";
 
     @Override
     protected String doInBackground(Void... params) {
