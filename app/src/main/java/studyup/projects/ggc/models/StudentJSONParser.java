@@ -2,8 +2,11 @@ package studyup.projects.ggc.models;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class StudentJSONParser {
 
@@ -38,8 +41,22 @@ public class StudentJSONParser {
         return response;
     }
 
-    public static Object[] parseJSONRecordList(String data){
-        return null;
+    public static ArrayList<Student> parseJSONRecordList(String data) {
+        ArrayList<Student> studentList = new ArrayList<Student>();
+        try {
+            JSONObject jObject = new JSONObject(data);
+            JSONArray jArray = jObject.getJSONArray("students");
+            for (int i = 0; i < jArray.length(); i++) {
+                Student student = new Student();
+                JSONObject newJSON = jArray.getJSONObject(i);
+                student.setUserName(newJSON.get("username").toString());
+                student.setFirstName(newJSON.get("first_name").toString());
+                student.setLastName(newJSON.get("last_name").toString());
+                student.setInstitution(newJSON.get("institution").toString());
+                studentList.add(student);
+            }
+        } catch (JSONException e){}
+        return studentList;
     }
 
     /*public static void main(String[] args){
