@@ -5,9 +5,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.concurrent.ExecutionException;
 
 import studyup.projects.ggc.controllers.R;
 import studyup.projects.ggc.tasks.CreateProfileAsyncTask;
@@ -31,8 +34,17 @@ public class CreateProfileActivity extends AppCompatActivity {
         this.submitAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
-                CreateProfileAsyncTask task = new CreateProfileAsyncTask();
+                username.getText();
+                CreateProfileAsyncTask task = new CreateProfileAsyncTask(username.getText().toString(), password.getText().toString(), firstName.getText().toString(),
+                        lastName.getText().toString(), institution.getText().toString());
+                try {
+                    String response = task.execute().get();
+                    Log.d("Response: ", response);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

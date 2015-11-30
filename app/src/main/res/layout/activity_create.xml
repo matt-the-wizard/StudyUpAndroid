@@ -42,18 +42,9 @@
                     android:id="@+id/profile_title_label"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="(name)@school.edu  ...."
-                    android:id="@+id/username_hint"
-                     />
-
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:text="enter profile name"
                     android:ems="10"
                     android:id="@+id/username_value"
@@ -75,14 +66,6 @@
                     android:text="@string/first_name_label"
                     android:id="@+id/first_name_label"
                     android:textColor="#100f0f"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/first_name_hint"
-                    android:textColor="#100f0f" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -109,14 +92,6 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/last_name_label"
                     android:id="@+id/lastNameLabel"
-                    android:textColor="#100f0f" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/last_name_hint"
                     android:textColor="#100f0f" />
 
                 <EditText
@@ -147,13 +122,6 @@
                     android:id="@+id/passwordTitleLabel"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/passwordTitleValue"
-                    />
-
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -178,13 +146,6 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Verify Password: "
                     android:id="@+id/passwordVTitleLabel"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/passwordVTitleValue"
                     />
 
                 <EditText
@@ -212,14 +173,6 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:id="@+id/institutionLabel"
                     android:text="@string/institution_label"
-                    android:textColor="#100f0f" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="type institution...."
                     android:textColor="#100f0f" />
 
                 <EditText
