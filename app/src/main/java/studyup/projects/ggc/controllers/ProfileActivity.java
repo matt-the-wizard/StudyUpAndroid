@@ -20,15 +20,26 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         this.mProfileLableDisplay = (TextView) findViewById(R.id.profileTitleValue);
         this.mFirstNameDisplay = (TextView) findViewById(R.id.firstNameValue);
         this.mLastNameDisplay = (TextView) findViewById(R.id.lastNameValue);
         this.mInstitutionDisplay = (TextView) findViewById(R.id.institutionValue);
 
-        this.mProfileLableDisplay.setText(Student.LOGGED_IN_USER.getUserName());
-        this.mFirstNameDisplay.setText(Student.LOGGED_IN_USER.getFirstName());
-        this.mLastNameDisplay.setText(Student.LOGGED_IN_USER.getLastName());
-        this.mInstitutionDisplay.setText(Student.LOGGED_IN_USER.getInstitution());
+        Student student = (Student) getIntent().getSerializableExtra(StudentListActivity.STUDENT_TAG);
+
+        if (student != null) {
+            this.mProfileLableDisplay.setText(student.getUserName());
+            this.mFirstNameDisplay.setText(student.getFirstName());
+            this.mLastNameDisplay.setText(student.getLastName());
+            this.mInstitutionDisplay.setText(student.getInstitution());
+        }
+        else {
+            this.mProfileLableDisplay.setText(Student.LOGGED_IN_USER.getUserName());
+            this.mFirstNameDisplay.setText(Student.LOGGED_IN_USER.getFirstName());
+            this.mLastNameDisplay.setText(Student.LOGGED_IN_USER.getLastName());
+            this.mInstitutionDisplay.setText(Student.LOGGED_IN_USER.getInstitution());
+        }
 
     }
 
