@@ -34,8 +34,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         this.submitAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username.getText();
-                CreateProfileAsyncTask task = new CreateProfileAsyncTask(username.getText().toString(), password.getText().toString(), firstName.getText().toString(),
+                CreateProfileAsyncTask task = new CreateProfileAsyncTask(username.getText().toString(), password.getText().toString(), passwordDigest.getText().toString(), firstName.getText().toString(),
                         lastName.getText().toString(), institution.getText().toString());
                 try {
                     String response = task.execute().get();

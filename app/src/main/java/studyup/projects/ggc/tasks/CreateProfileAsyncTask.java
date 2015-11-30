@@ -16,9 +16,10 @@ import java.net.URL;
 public class CreateProfileAsyncTask extends AsyncTask<Void, Void, String> {
     private String jsonURL;
 
-    public CreateProfileAsyncTask(String username, String password, String firstName, String lastName, String institution) {
-        this.jsonURL = "https://localhost:3000/api/students?username=" + username
+    public CreateProfileAsyncTask(String username, String password, String passwordConfirmation, String firstName, String lastName, String institution) {
+        this.jsonURL = "https://studyupggc.herokuapp.com/api/students?username=" + username
                 + "&password=" + password
+                + "&password_confirmation=" + passwordConfirmation
                 + "&first_name=" + firstName
                 + "&last_name=" + lastName
                 + "&institution=" + institution;
