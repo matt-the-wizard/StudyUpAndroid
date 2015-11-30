@@ -20,7 +20,7 @@ import studyup.projects.ggc.tasks.LoginUserAsyncTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button loadProfileButton;
+    private Button loadProfileButton, createAccountButton;
     private TextView usernameTextValue, passwordTextValue;
 
     @Override
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.loadProfileButton = (Button) findViewById(R.id.load_profile_button);
+        this.createAccountButton = (Button) findViewById(R.id.button_create_account);
         this.usernameTextValue = (TextView) findViewById(R.id.username_value);
         this.passwordTextValue = (TextView) findViewById(R.id.password_value);
         this.loadProfileButton.setOnClickListener(new View.OnClickListener() {
@@ -61,5 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        this.createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, CreateProfileActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 }
