@@ -127,6 +127,12 @@
                     android:id="@+id/institutionValue"
                     android:textColor="#100f0f" />
             </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Email"
+                android:id="@+id/email_button"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
