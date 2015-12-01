@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                         if (response != null && !response.contains(Student.AUTHENTICATION_ERROR)) {
                             Student.LOGGED_IN_USER = StudentJSONParser.parseJSONRecord(response);
                             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                            MainActivity.this.startActivity(intent);
+                            startActivity(intent);
                         }
                         else if (response.contains(Student.AUTHENTICATION_ERROR)){
                             Toast.makeText(getApplicationContext(), StudentJSONParser.parseJSONError(response), Toast.LENGTH_LONG).show();

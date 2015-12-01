@@ -1,5 +1,6 @@
 package studyup.projects.ggc.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,10 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
 import studyup.projects.ggc.controllers.R;
+import studyup.projects.ggc.models.Student;
+import studyup.projects.ggc.models.StudentJSONParser;
+import studyup.projects.ggc.tasks.CheckNetworkAsyncTask;
 import studyup.projects.ggc.tasks.CreateProfileAsyncTask;
 
 public class CreateProfileActivity extends AppCompatActivity {
@@ -37,12 +42,28 @@ public class CreateProfileActivity extends AppCompatActivity {
                 CreateProfileAsyncTask task = new CreateProfileAsyncTask(username.getText().toString(), password.getText().toString(), passwordDigest.getText().toString(), firstName.getText().toString(),
                         lastName.getText().toString(), institution.getText().toString());
                 try {
-                    String response = task.execute().get();
-                    Log.d("Response: ", response);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
+                    CheckNetworkAsyncTask networkAsyncTask = new CheckNetworkAsyncTask(getApplicationContext());
+                    boolean networkAccess = networkAsyncTask.execute().get();
+                    if (networkAccess) {
+                        String response = task.execute().get();
+                        Log.d("Response: ", response);
+                        if (response != null && !response.contains(Student.AUTHENTICATION_ERROR)) {
+                            Student.LOGGED_IN_USER = StudentJSONParser.parseJSONRecord(response);
+                            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                            startActivity(intent);
+                        }
+                        else if (response.contains(Student.AUTHENTICATION_ERROR)){
+                            Toast.makeText(getApplicationContext(), StudentJSONParser.parseJSONError(response), Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "There was an error in loading your account.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "You do not have internet access.", Toast.LENGTH_LONG).show();
+                    }
+                } catch (ExecutionException | InterruptedException ei) {
+                    Toast.makeText(CreateProfileActivity.this, "There was an network error loading your account", Toast.LENGTH_LONG).show();
                 }
             }
         });
