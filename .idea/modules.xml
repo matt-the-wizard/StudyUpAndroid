@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-    <modules>
-<<<<<<< HEAD
-=======
-      <module fileurl="file://$PROJECT_DIR$/StudyUp.iml" filepath="$PROJECT_DIR$/StudyUp.iml" />
->>>>>>> aa090fcfd309ebaba66d8b40e5e1e4b034d38a0a
-      <module fileurl="file://$PROJECT_DIR$/StudyUpAndroid.iml" filepath="$PROJECT_DIR$/StudyUpAndroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-    </modules>
+    <modules />
   </component>
 </project>
