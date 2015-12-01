@@ -1,10 +1,13 @@
 package studyup.projects.ggc.controllers;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import studyup.projects.ggc.models.Student;
@@ -15,6 +18,7 @@ public class ProfileActivity extends AppCompatActivity {
                      mFirstNameDisplay,
                      mLastNameDisplay,
                      mInstitutionDisplay;
+    private Button mEmailButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         this.mFirstNameDisplay = (TextView) findViewById(R.id.firstNameValue);
         this.mLastNameDisplay = (TextView) findViewById(R.id.lastNameValue);
         this.mInstitutionDisplay = (TextView) findViewById(R.id.institutionValue);
+        this.mEmailButton = (Button) findViewById(R.id.email_button);
 
         Student student = (Student) getIntent().getSerializableExtra(StudentListActivity.STUDENT_TAG);
 
@@ -40,6 +45,13 @@ public class ProfileActivity extends AppCompatActivity {
             this.mLastNameDisplay.setText(Student.LOGGED_IN_USER.getLastName());
             this.mInstitutionDisplay.setText(Student.LOGGED_IN_USER.getInstitution());
         }
+
+        this.mEmailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _sendEmail();
+            }
+        });
 
     }
 
@@ -58,6 +70,17 @@ public class ProfileActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void _sendEmail(){
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {""});
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Want to study?");
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Contact me on study up!\n" +
+         "https://studyupggc.herokuapp.com");
+        startActivity(Intent.createChooser(emailIntent, "Sharing Options"));
     }
 
 }

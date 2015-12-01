@@ -39,9 +39,9 @@ public class StudentListActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Toast.makeText(getApplicationContext(), "You clicked an item", Toast.LENGTH_LONG).show();
         Student student = (Student) getListAdapter().getItem(position);
         Intent i = new Intent(StudentListActivity.this, ProfileActivity.class);
         i.putExtra(STUDENT_TAG, student);
+        startActivity(i);
     }
 }
