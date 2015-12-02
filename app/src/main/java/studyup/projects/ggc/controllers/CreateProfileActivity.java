@@ -39,6 +39,9 @@ public class CreateProfileActivity extends AppCompatActivity {
         this.submitAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Coming Soon!", Toast.LENGTH_LONG).show();
+                /*
+                Couldn't get this working in time for demo.
                 CreateProfileAsyncTask task = new CreateProfileAsyncTask(username.getText().toString(), password.getText().toString(), passwordDigest.getText().toString(), firstName.getText().toString(),
                         lastName.getText().toString(), institution.getText().toString());
                 try {
@@ -64,7 +67,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                     }
                 } catch (ExecutionException | InterruptedException ei) {
                     Toast.makeText(CreateProfileActivity.this, "There was an network error loading your account", Toast.LENGTH_LONG).show();
-                }
+                }*/
             }
         });
     }
