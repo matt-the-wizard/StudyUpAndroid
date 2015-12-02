@@ -1,7 +1,7 @@
-package studyup.projects.ggc.controllers;
+package studyup.projects.ggc.tasks;
 
-import android.util.Log;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,13 +10,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LoginUserAsyncTask extends AsyncTask<Void, Integer, String> {
+/**
+ * Created by matt-the-wizard on 11/22/15.
+ */
+public class LoadStudentsAsyncTask extends AsyncTask<Void, Void, String> {
 
-    private String jsonURL;
-
-    public LoginUserAsyncTask(String username, String password) {
-        this.jsonURL = "https://studyupggc.herokuapp.com/api/students/access_profile?username=" + username + "&password=" + password;
-    }
+    private String jsonURL = "https://studyupggc.herokuapp.com/api/students";
 
     @Override
     protected String doInBackground(Void... params) {
@@ -47,6 +46,4 @@ public class LoginUserAsyncTask extends AsyncTask<Void, Integer, String> {
             return response;
         }
     }
-
-
 }

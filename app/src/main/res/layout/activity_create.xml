@@ -21,17 +21,17 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            tools:context="studyup.projects.ggc.controllers.ProfileActivity"
+            tools:context="studyup.projects.ggc.controllers.CreateActivity"
             android:background="#175b19"
             android:padding="10dp">
 
             <LinearLayout
-                android:id="@+id/profileLayout"
+                android:id="@+id/createLayout"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#f6f1f1"
-                android:padding="10dp"
+                android:padding="1dp"
                 android:layout_marginTop="38dp">
 
                 <TextView
@@ -39,15 +39,16 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Profile: "
-                    android:id="@+id/profileTitleLabel"
+                    android:id="@+id/profile_title_label"
                     />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/profileTitleValue"
-                     />
+                    android:hint="john@ggc.edu"
+                    android:ems="10"
+                    android:id="@+id/username_value"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -56,7 +57,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#f6f1f1"
-                android:padding="10dp"
                 android:layout_marginTop="38dp">
 
                 <TextView
@@ -64,16 +64,16 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/first_name_label"
-                    android:id="@+id/firstNameLabel"
+                    android:id="@+id/first_name_label"
                     android:textColor="#100f0f"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/firstNameValue"
-                    android:textColor="#100f0f" />
+                    android:hint="John"
+                    android:ems="10"
+                    android:id="@+id/first_name_value"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -82,7 +82,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#f6f1f1"
-                android:padding="10dp"
+                android:padding="1dp"
                 android:layout_marginTop="38dp">
 
                 <TextView
@@ -93,13 +93,65 @@
                     android:id="@+id/lastNameLabel"
                     android:textColor="#100f0f" />
 
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Doe"
+                    android:ems="10"
+                    android:id="@+id/last_name_value"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/passwordLayout"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#f6f1f1"
+                android:padding="1dp"
+                android:layout_marginTop="38dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/lastNameValue"
-                    android:textColor="#100f0f" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Password: "
+                    android:id="@+id/passwordTitleLabel"
+                    />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="supersecret"
+                    android:ems="10"
+                    android:id="@+id/password_value"
+                    android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/passwordVLayout"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#f6f1f1"
+                android:padding="1dp"
+                android:layout_marginTop="38dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Verify Password: "
+                    android:id="@+id/passwordVTitleLabel"
+                    />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="supersecret"
+                    android:ems="10"
+                    android:id="@+id/password_digest_value"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -108,7 +160,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#f6f1f1"
-                android:padding="10dp"
+                android:padding="1dp"
                 android:layout_marginTop="38dp">
 
                 <TextView
@@ -119,20 +171,19 @@
                     android:text="@string/institution_label"
                     android:textColor="#100f0f" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/institutionValue"
-                    android:textColor="#100f0f" />
+                    android:id="@+id/institution_value"
+                    android:hint="Georgia Gwinnett College"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send Email"
-                android:id="@+id/email_button"/>
+                android:text="Submit"
+                android:id="@+id/submit_account_button" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

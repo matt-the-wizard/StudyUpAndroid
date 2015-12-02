@@ -1,6 +1,11 @@
 package studyup.projects.ggc.models;
 
-public class Student {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Student implements Serializable {
     public static Student LOGGED_IN_USER;
     public static final String AUTHENTICATION_ERROR = "Study Up Authentication Error";
     private String userName, firstName, lastName, institution;
@@ -60,6 +65,6 @@ public class Student {
 
     @Override
     public String toString(){
-        return this.firstName + " " + this.lastName + " " + this.institution;
+        return "Student:\t" + this.firstName + " " + this.lastName + "\nInstitution:\t" + this.institution;
     }
 }
